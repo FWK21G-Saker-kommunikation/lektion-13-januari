@@ -29,6 +29,10 @@ async function login(loginInformation) {
     });
     const data = await response.json();
     console.log(data);
+
+    if (data.success) {
+        window.location.href = 'http://localhost:5000/loggedin.html';
+    }
 }
 
 createButtonElem.addEventListener('click', () => {

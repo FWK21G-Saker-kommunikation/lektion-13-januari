@@ -1,8 +1,10 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const app = express();
 
 app.use(express.static('../frontend'));
 app.use(express.json());
+app.use(cookieParser());
 
 let accounts = [
     { 
@@ -50,6 +52,28 @@ app.post('/api/login', (request, response) => {
         if (account.username == credentials.username &&
             account.password == credentials.password ) {
                 resObj.success = true;
+
+                const cookieId = Math.round(Math.random() * 10000);
+
+                account.cookie = cookieId;
+
+                response.cookie('loggedIn', cookieId);
+        }
+    });
+
+    response.json(resObj);
+});
+
+app.get('/api/loggedin', (request, response) => {
+    const cookie = request.cookies.loggedIn;
+
+    let resObj = {
+        loggedIn: false
+    }
+
+    accounts.forEach((account) => {
+        if (account.cookie == cookie) {
+            resObj.loggedIn = true;
         }
     });
 

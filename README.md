@@ -4,6 +4,8 @@ Uppdelning av login-övningen i delproblem: https://www.figma.com/file/v4ntzPBm7
 
 ## Övningar
 
+Cookies övning: https://gist.github.com/zocom-christoffer-wallenberg/15d7cc48ee0e634370586b51bb2cc7a2
+
 ## Artiklar
 
 ## Videor
